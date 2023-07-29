@@ -1,0 +1,54 @@
+{%extends './base.html' %}
+
+{% block content %}
+<div class="container card shadow-lg mt-5">
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col"> S.No </th>
+      <th scope="col"> Action </th>
+      <th scope="col"> Items </th>
+      <th scope="col"> Name </th>
+      <th scope="col"> Price  </th>
+      <th scope="col"> Qty </th>
+      <th scope="col"> Total </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for cartitems in carts.cart_items.all  %}
+      <tr>
+
+        <th scope="col"> {{forloop.counter }} </th>
+          <th>
+            <a href="{% url 'remove_cart_items' cartitems.uid  %}" class="btn btn-danger">Remove From Cart</a>
+        </th>
+        
+        <td>
+
+          <img src="/media/{{cartitems.pizza.images}}" style="height: 100px; width: 100px;"> </td>
+        <td>{{cartitems.pizza.pizza_name}} </td>
+        <td> $ {{cartitems.pizza.price}}  </td>
+        <td> 1 </td>
+        <td> {{cartitems.pizza.price}} </td>
+      </tr>
+    {% endfor %}
+
+
+    <tr scope = "row">
+    <td>
+        <b>Grand Total </b>
+        <br>
+        <p> $ {{ carts.get_total }}
+        </p>
+    </td>
+    <td><a href="{% url 'orders' %}"><button class="btn btn-light" style="font-size:18px"> Proceed To Payment </button></a>
+    </td>
+    </tr>
+
+    </tbody>
+
+  </table>
+
+
+</div>
+{%endblock%}

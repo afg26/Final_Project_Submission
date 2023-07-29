@@ -1,0 +1,31 @@
+{%extends './base.html' %}
+{% block content %}
+<div class="container card shadow-lg mt-5">
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col"> Total </th>
+      <th scope="col">  Paid </th>
+      <th scope="col"> Date </th>
+    </tr>
+    </thead>
+    <tbody>
+
+    
+    <tr>
+    
+      <td>$ {{ carts.get_total }} </td>
+      <td> True </td>
+      <td>{{carts.created_at}}</td>
+
+    </tr>
+    
+    <td><a href="#"><button class="btn btn-light" style="font-size:18px"> Print Receipt </button></a>
+    </td>
+
+    
+    </tbody>
+    </table>
+</div>
+
+{%endblock%}
